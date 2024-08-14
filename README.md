@@ -10,9 +10,9 @@ to assess many Azure service.
 
 | Service | Status   | Resources                 | Documentation link              | Owners                |
 | ------- | -------- | ------------------------- | ------------------------------- | --------------------- |
-| AKS     | Complete | • Cluster<br>• Node pools | [Documentation](AKS/README.md)  | @Nicwalle             |
-| APIM    | WIP      |                           | [Documentation](APIM/README.md) |                       |
-| SQL     | WIP      | • Server<br>• Database    | [Documentation](SQL/README.md)  | @Nicwalle, @noyasarko |
+| AKS     | ✅ Complete | • Cluster<br>• Node pools | [Documentation](AKS/README.md)  | @Nicwalle             |
+| APIM    | 🚧 WIP      |                           | [Documentation](APIM/README.md) |                       |
+| SQL     | 🚧 WIP      | • Server<br>• Database    | [Documentation](SQL/README.md)  | @Nicwalle, @noyasarko |
 
 ## Getting started
 
