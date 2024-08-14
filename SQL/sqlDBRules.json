@@ -1,0 +1,32 @@
+{
+    "SQL_DB_Compliance_Auditing" : {
+    "expected": true,
+    "explanation": "The database should have auditing enabled. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/auditing-setup?view=azuresql",
+    "function": "hasAuditingDBEnabled"
+  },
+  "SQL_DB_Compliance_DataUsage" : {
+    "expected": true,
+    "explanation": "The database must not surpass its data usage, otherwise moving to another tier is advisable. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/purchasing-models?view=azuresql",
+    "function" : "isDatabaseSizeWithinLimit"
+  },
+  "SQL_DB_Compliance_AutoPauseDelay" : {
+    "expected": true,
+    "explanation": "If database is serverless then autopausedelay can be enabled. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/serverless-tier-overview?view=azuresql-db&tabs=general-purpose",
+    "function": "hasAutopauseDelayEnabled"
+  },
+  "SQL_DB_DataManagement_backUps" : {
+    "expected": true,
+    "explanation": "The database should have backups implemented. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/automated-backups-overview?view=azuresql-db",
+    "function": "hasBackUpsEnabled"
+  },
+  "SQL_DB_DataManagement_Replicas" : {
+    "expected" : true,
+    "explanation" : "The database should have replicas in place. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/active-geo-replication-configure-portal?view=azuresql-db&tabs=portal",
+    "function" : "hasReplicasConfigured" 
+  },
+  "SQL_DB_Security_TDE" : {
+    "expected" :true,
+    "explanation": "The database should have encryption on. For more informations: https://learn.microsoft.com/en-us/azure/azure-sql/database/transparent-data-encryption-byok-database-level-overview?view=azuresql OR https://learn.microsoft.com/en-us/azure/azure-sql/database/transparent-data-encryption-byok-database-level-geo-replication-restore?view=azuresql&tabs=azure-portal%2Cazure-portal2",
+    "function" : "hasTDEenabled"
+  }
+}

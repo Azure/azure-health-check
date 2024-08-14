@@ -1,0 +1,27 @@
+{
+  "AKS_NodePool_Resiliency_Autoscaling": {
+    "expected": true,
+    "explanation": "Autoscaling should be enabled for the nodepool. For more information, see https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler",
+    "function": "hasAutoscalingEnabled"
+  },
+  "AKS_NodePool_Resiliency_AvailabilityZones": {
+    "expected": true,
+    "explanation": "Availability zones should be enabled for the Node Pools. For more information, see https://learn.microsoft.com/en-us/azure/aks/availability-zones",
+    "function": "hasAvailabilityZonesEnabled"
+  },
+  "AKS_NodePool_Resiliency_MinNodesPerPool": {
+    "expected": true,
+    "explanation": "For high availability, the minimum amount of nodes per pool should be 3.",
+    "function": "hasMin3Nodes"
+  },
+  "AKS_NodePool_Resiliency_EphemeralOSDisk": {
+    "expected": true,
+    "explanation": "Ephemeral OS disk should be used for the nodes.",
+    "function": "hasEphemeralOSDiskEnabled"
+  },
+  "AKS_NodePool_Private_PublicIPDisabled": {
+    "expected": false,
+    "explanation": "Public IP should be disabled for the nodes in the nodepool. For more information, see https://learn.microsoft.com/en-us/azure/aks/use-node-public-ips",
+    "function": "hasPublicIPEnabled"
+  }
+}

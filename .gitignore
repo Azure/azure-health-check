@@ -396,3 +396,10 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
+
+out/*
+AKS_Assessment_*
+sample.json
+run.ps1
+*local.launch.json

@@ -1,0 +1,7 @@
+{
+  "APIM_Platform_stv2": {
+    "expected": true,
+    "explanation": "The API Management service should be migrated to the stv2 platform. See https://learn.microsoft.com/en-us/azure/api-management/migrate-stv1-to-stv2-no-vnet",
+    "function": "isStv2"
+  }
+}
