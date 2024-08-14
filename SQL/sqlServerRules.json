@@ -1,0 +1,42 @@
+{
+  "SQL_Server_Auth_EntraIDIntegrated": {
+    "expected": true,
+    "explanation": "The server should be integrated with EntraID for authentication and authorization. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/authentication-aad-configure?view=azuresql&tabs=azure-powershell",
+    "function": "hasEntraIDIntegrationEnabled"
+  },
+  "SQL_Server_Compliance_Auditing" : {
+    "expected": true,
+    "explanation": "The server should have auditing enabled. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/auditing-setup?view=azuresql",
+    "function": "hasAuditingEnabled"
+  },
+  "SQL_Server_Networking_MinimumTLS1.2": {
+    "expected": true,
+    "explanation": "The server should have TLS 1.2 enabled. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/connectivity-settings?view=azuresql&tabs=azure-portal#minimal-tls-version",
+    "function": "hasMinimumTLSVersion12"
+  },
+  "SQL_Server_Networking_NetworkAccess": {
+    "expected": true,
+    "explanation": "The server should have public network access disabled. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/connectivity-settings?view=azuresql&tabs=azure-portal ",
+    "function": "hasPublicNetworkAccessDisabled"
+  },
+  "SQL_Server_Networking_OutboundNetworkAccess": {
+    "expected": true,
+    "explanation": "The server should have restrictions on outbound network access disabled. For more information:  https://learn.microsoft.com/en-us/azure/azure-sql/database/outbound-firewall-rule-overview ",
+    "function": "hasrestrictOutboundNetworkAccessDisabled"
+  },
+  "SQL_Server_Networking_PrivateEndpointConnections": {
+    "expected": true,
+    "explanation": "The server should have private endpoint connections enabled. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/private-endpoint-overview?view=azuresql",
+    "function": "hasPrivateEndpointConnectionsEnabled"
+  },
+  "SQL_Server_Networking_MaxFirewallRules": {
+    "expected": true,
+    "explanation": "The server should have no more than 10 firewall rules enabled. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/firewall-configure?view=azuresql",
+    "function": "hasMax10FirewallRulesEnabled"
+  },
+    "SQL_Server_Networking_MaxFirewallIPRange": {
+    "expected": true,
+    "explanation": "If public access is allowed via selected networks then the server should have up to 10 IPs enabled. For more information: https://learn.microsoft.com/en-us/azure/azure-sql/database/firewall-configure?view=azuresql",
+    "function": "firewallHasMax10AuthorizedIPs"
+  }
+}

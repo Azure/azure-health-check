@@ -1,0 +1,153 @@
+{
+  "AKS_Running": {
+    "expected": true,
+    "explanation": "The cluster should be running to get accurate results. Some results might be wrong due to the current state.",
+    "function": "isClusterRunning"
+  },
+  "AKS_Provisioned": {
+    "expected": true,
+    "explanation": "The cluster should be provisioned to get accurate results. Some results might be wrong due to the current state.",
+    "function": "isClusterProvisioned"
+  },
+  "AKS_Resiliency_Autoscaling": {
+    "expected": 0,
+    "explanation": "Autoscaling should be enabled in the cluster for all nodepools. For more information, see https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler",
+    "function": "countNodepoolsWithoutAutoscaling"
+  },
+  "AKS_Resiliency_AvailabilityZones": {
+    "expected": true,
+    "explanation": "Availability zones should be enabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/availability-zones",
+    "function": "hasAvailabilityZonesEnabled"
+  },
+  "AKS_Resiliency_UserNodePools": {
+    "expected": true,
+    "explanation": "User node pools should be used in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/use-multiple-node-pools",
+    "function": "hasUserNodePools"
+  },
+  "AKS_Resiliency_Backup": {
+    "expected": true,
+    "explanation": "Backups should be enabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/backup/azure-kubernetes-service-cluster-manage-backups",
+    "function": "hasBackupExtensionEnabled"
+  },
+  "AKS_Resiliency_MinNodesPerPool": {
+    "expected": true,
+    "explanation": "Each nodepool should have at least 3 nodes for high availability.",
+    "function": "hasMin3NodesPerPool"
+  },
+
+  "AKS_Private_Cluster": {
+    "expected": true,
+    "explanation": "The cluster should be private. For more information, see https://learn.microsoft.com/en-us/azure/aks/private-clusters",
+    "function": "isClusterPrivate"
+  },
+  "AKS_Private_FQDN": {
+    "expected": true,
+    "explanation": "The cluster should have a private FQDN. For more information, see https://learn.microsoft.com/en-us/azure/aks/private-clusters?tabs=azure-portal#disable-a-public-fqdn",
+    "function": "hasPrivateFQDN"
+  },
+  "AKS_Private_NoPublicLoadBalancer": {
+    "expected": false,
+    "explanation": "Public load balancers should not be used in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/internal-lb",
+    "function": "hasLoadBalancerWithPublicOutboundIp"
+  },
+
+  "AKS_Network_StandardLoadBalancer": {
+    "expected": true,
+    "explanation": "Standard load balancers should be used in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview",
+    "function": "hasStandardLoadBalancer"
+  },
+  "AKS_Network_Policies": {
+    "expected": true,
+    "explanation": "Network policies should be enabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/use-network-policies",
+    "function": "hasNetworkPoliciesEnabled"
+  },
+  "AKS_Network_CNIOverlay": {
+    "expected": true,
+    "explanation": "The cluster should use the Azure CNI Overlay network plugin. For more information, see https://learn.microsoft.com/en-us/azure/aks/azure-cni-overlay",
+    "function": "isCNIOverlay"
+  },
+
+  "AKS_Performance_EphemeralOSDisk": {
+    "expected": true,
+    "explanation": "Ephemeral OS disks should be used in the cluster. For more information, see https://learn.microsoft.com/en-us/samples/azure-samples/aks-ephemeral-os-disk/aks-ephemeral-os-disk/",
+    "function": "isOSDiskTypeEphemeral"
+  },
+
+  "AKS_Compliance_KubernetesVersionSupported": {
+    "expected": true,
+    "explanation": "The Kubernetes version used in the cluster should be supported by AKS. For more information, see https://learn.microsoft.com/en-us/azure/aks/supported-kubernetes-versions",
+    "function": "isKubernetesVersionSupported"
+  },
+  "AKS_Compliance_AutoUpgradeEnabled": {
+    "expected": true,
+    "explanation": "Auto-upgrade should be enabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-cluster",
+    "function": "hasAutoUpgradeProfile"
+  },
+  "AKS_Compliance_MaintenanceWindows": {
+    "expected": true,
+    "explanation": "Maintenance windows should be configured in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/planned-maintenance",
+    "function": "hasMaintenanceWindows"
+  },
+  "AKS_Compliance_SLA": {
+    "expected": true,
+    "explanation": "The cluster should have a service level agreement (SLA). For more information, see https://learn.microsoft.com/en-us/azure/aks/free-standard-pricing-tiers",
+    "function": "hasUptimeSLAEnabled"
+  },
+  "AKS_Compliance_AzurePolicyEnabled": {
+    "expected": true,
+    "explanation": "Azure Policy should be enabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/use-azure-policy",
+    "function": "hasAzurePoliciesEnabled"
+  },
+
+  "AKS_Addon_ContainerInsights": {
+    "expected": true,
+    "explanation": "Azure Monitor for containers should be enabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/azure-monitor/insights/container-insights-overview",
+    "function": "isContainerInsightsEnabled"
+  },
+  "AKS_Addon_DiagnosticSettings": {
+    "expected": true,
+    "explanation": "Diagnostic settings should be enabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/azure-monitor/essentials/create-diagnostic-settings",
+    "function": "hasDiagnosticSettings"
+  },
+  "AKS_Addon_Defender": {
+    "expected": true,
+    "explanation": "Microsoft Defender for Containers should be enabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-containers-introduction",
+    "function": "hasMicrosoftDefender"
+  },
+  "AKS_Addon_KeyVaultSecretProvider": {
+    "expected": true,
+    "explanation": "Azure Key Vault secret provider should be used for storing and accessing secrets. For more information, see https://learn.microsoft.com/en-us/azure/aks/csi-secrets-store-driver",
+    "function": "hasKeyVaultSecretProviderEnabled"
+  },
+
+  "AKS_Auth_EntraIDIntegrated": {
+    "expected": true,
+    "explanation": "The cluster should be integrated with Azure Active Directory for authentication and authorization. For more information, see https://learn.microsoft.com/en-us/azure/aks/enable-authentication-microsoft-entra-id",
+    "function": "hasAzureADIntegrationEnabled"
+  },
+  "AKS_Auth_LocalAccountsDisbaled": {
+    "expected": true,
+    "explanation": "Local accounts should be disabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad",
+    "function": "hasLocalAccountsDisabled"
+  },
+  "AKS_Auth_RBACEnabled": {
+    "expected": true,
+    "explanation": "Role-based access control (RBAC) should be enabled in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/operator-best-practices-cluster-security#enable-rbac",
+    "function": "hasRBACEnabled"
+  },
+  "AKS_Auth_UserAssignedIdentity": {
+    "expected": true,
+    "explanation": "User-assigned managed identities should be used in the cluster. For more information, see https://learn.microsoft.com/en-us/azure/aks/use-managed-identity",
+    "function": "hasManagedIdentity"
+  },
+  "AKS_Auth_WorkloadIdentities": {
+    "expected": true,
+    "explanation": "Workload identities should be used to authenticate to other resources. For more information, see https://learn.microsoft.com/en-us/azure/aks/learn/tutorial-kubernetes-workload-identity",
+    "function": "hasWorkloadIdentityEnabled"
+  },
+  "AKS_Auth_PodIdentities": {
+    "expected": false,
+    "explanation": "Pod identities are deprecated and should not be used. Leverage workload identities instead. For more information, see https://learn.microsoft.com/en-us/azure/aks/learn/tutorial-kubernetes-workload-identity",
+    "function": "hasPodIdentities"
+  }
+}
