@@ -27,6 +27,10 @@ class ACAEnvCheck: ResourceCheck {
         return $this.acaEnvObject.properties.zoneRedundant
     }
 
+    [bool] isPublicAccessEnabled() {
+        return -not $this.acaEnvObject.properties.vnetConfiguration.internal 
+    }
+
 
     [CheckResults] assess() {
         $rules = Get-Content ACA/acaEnvRules.json | ConvertFrom-Json

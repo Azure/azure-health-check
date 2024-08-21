@@ -1,7 +1,12 @@
 {
   "ACA_Resiliency_AvailabilityZones": {
     "expected": true,
-    "explanation": "Azure Container Apps should be deployed across multiple availability zones for high availability.",
+    "explanation": "Azure Container Apps Environment should be deployed across multiple availability zones for high availability. See: https://learn.microsoft.com/en-us/azure/reliability/reliability-azure-container-apps?tabs=azure-cli",
     "function": "hasAvailabilityZones"
+  },
+  "ACA_Private_DisablePublicAccess": {
+    "expected": false,
+    "explanation": "Azure Container Apps Environment should be deployed with public access disabled. See: https://learn.microsoft.com/en-us/azure/container-apps/vnet-custom-internal?tabs=bash&pivots=azure-portal",
+    "function": "isPublicAccessEnabled"
   }
 }
