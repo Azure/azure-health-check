@@ -1,0 +1,7 @@
+{
+  "ACA_Resiliency_AvailabilityZones": {
+    "expected": true,
+    "explanation": "Azure Container Apps should be deployed across multiple availability zones for high availability.",
+    "function": "hasAvailabilityZones"
+  }
+}
