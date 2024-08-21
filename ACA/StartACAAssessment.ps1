@@ -14,11 +14,22 @@ foreach ($currentSubscription in $subscriptions) {
     
     foreach ($acaEnv in $acaEnvs) {
         Write-Host ""
-        Write-Host "**** Assessing the ACA $($aca.name)..." -ForegroundColor Blue
+        Write-Host "**** Assessing the Container App Environment $($acaEnv.name)..." -ForegroundColor Blue
         $acaEnvInstance = [ACAEnvCheck]::new($currentSubscription.id, $currentSubscription.displayName, $acaEnv)
 
         $acaEnvInstance.assess().GetAllResults() | Export-Csv -Path "$OutPath\aca_env_assess_$today.csv" -NoTypeInformation -Append -Delimiter $csvDelimiter
         Write-Host ""
+
+        $jsonACA = az containerapp list --environment $acaEnv.name -o json --only-show-errors
+        $acaList = $jsonACA | ConvertFrom-Json -AsHashTable
+
+        foreach ($aca in $acaList) {
+            Write-Host "**** Assessing the Container App $($aca.name) from environment $($acaEnv.name)..." -ForegroundColor Blue
+            $acaCheck = [ACACheck]::new($currentSubscription.id, $currentSubscription.displayName, $acaEnv.name, $aca)
+
+            $acaCheck.assess().GetAllResults() | Export-Csv -Path "$OutPath\aca_assess_$today.csv" -NoTypeInformation -Append -Delimiter $csvDelimiter
+            Write-Host ""
+        }
 
     }
 }

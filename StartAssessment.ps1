@@ -4,6 +4,7 @@ using module ./APIM/APIMCheck.psm1
 using module ./SQL/SQLServerCheck.psm1
 using module ./SQL/SQLDBCheck.psm1
 using module ./ACA/ACAEnvCheck.psm1
+using module ./ACA/ACACheck.psm1
 
 
 param (

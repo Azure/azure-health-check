@@ -16,7 +16,7 @@ class ACAEnvCheck: ResourceCheck {
     }
 
     [string] getLocation() {
-        return $this.acaEnvObject.name
+        return $this.acaEnvObject.location
     }
 
     [string] getResourceGroup() {
@@ -29,6 +29,13 @@ class ACAEnvCheck: ResourceCheck {
 
     [bool] isPublicAccessEnabled() {
         return -not $this.acaEnvObject.properties.vnetConfiguration.internal 
+    }
+
+    [bool] isMTLSEnabled() {
+        
+        throw "Not implemented"
+
+        return $this.acaEnvObject.properties.peerAuthentication.mtls.enabled
     }
 
 
