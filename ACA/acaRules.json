@@ -21,7 +21,7 @@
   },
   "ACA_Security_ApplyIPSecurityRestrictionsIfExposedExternally": {
     "expected": true,
-    "explanation": "Azure Container Apps with external ingress should have IP security restrictions applied. See: https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview",
+    "explanation": "Azure Container Apps with external ingress should have IP security restrictions applied. See: https://learn.microsoft.com/en-us/azure/container-apps/ip-restrictions",
     "function": "hasIPSecurityRestrictions"
   }
 }
