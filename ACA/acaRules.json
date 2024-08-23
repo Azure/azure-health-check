@@ -13,5 +13,10 @@
     "expected": false,
     "explanation": "Azure Container Apps should be deployed with insecure ingress disabled for better security. See: https://learn.microsoft.com/en-us/azure/container-apps/ingress-how-to",
     "function": "isInsecureIngressAllowed"
+  },
+  "ACA_Identity_UseManagedIdentity": {
+    "expected": true,
+    "explanation": "Azure Container Apps should be deployed with managed identity (user and/or system assigned). See: https://learn.microsoft.com/en-us/azure/container-apps/managed-identity",
+    "function": "isManagedIdentityEnabled"
   }
 }

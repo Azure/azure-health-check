@@ -41,6 +41,9 @@ class ACACheck: ResourceCheck {
         return $this.acaObject.properties.configuration.ingress.allowInsecure
     }
 
+    [bool] isManagedIdentityEnabled() {
+        return $this.acaObject.identity.type -ne "None"
+    }
 
 
     [CheckResults] assess() {
