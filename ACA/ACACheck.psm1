@@ -45,6 +45,13 @@ class ACACheck: ResourceCheck {
         return $this.acaObject.identity.type -ne "None"
     }
 
+    [bool] hasIPSecurityRestrictions() {
+        if (-not $this.isExternalIngressEnabled()) {
+            return $true
+        }
+        return ($this.acaObject.properties.configuration.ingress.ipSecurityRestrictions -ne $null)
+    }
+
 
     [CheckResults] assess() {
         $rules = Get-Content ACA/acaRules.json | ConvertFrom-Json
