@@ -17,6 +17,13 @@
             "request": "launch",
             "script": "./StartAssessment.ps1",
             "args": ["-AuthType", "none" , "-Services", "all"]
+        },
+        {
+            "name": "ACA",
+            "type": "PowerShell",
+            "request": "launch",
+            "script": "./StartAssessment.ps1",
+            "args": ["-AuthType", "none" , "-Services", "aca"]
         }
     ]
 }

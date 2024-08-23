@@ -8,11 +8,12 @@ to assess many Azure service.
 
 ## Supported services
 
-| Service | Status   | Resources                 | Documentation link              | Owners                |
-| ------- | -------- | ------------------------- | ------------------------------- | --------------------- |
-| AKS     | ✅ Complete | • Cluster<br>• Node pools | [Documentation](AKS/README.md)  | @Nicwalle             |
-| APIM    | 🚧 WIP      |                           | [Documentation](APIM/README.md) |                       |
-| SQL     | 🚧 WIP      | • Server<br>• Database    | [Documentation](SQL/README.md)  | @Nicwalle, @noyasarko |
+| Service                        | Status      | Resources                 | Documentation link              | Owners                |
+| ------------------------------ | ----------- | ------------------------- | ------------------------------- | --------------------- |
+| Azure Kubernetes Service (AKS) | ✅ Complete | • Cluster<br>• Node pools | [Documentation](AKS/README.md)  | @Nicwalle             |
+| Azure Container Apps (ACA)     | 🚧 WIP      | • Environment<br>• Apps   | [Documentation](ACA/README.md)  | @Nicwalle             |
+| Azure API Management (APIM)    | 🚧 WIP      |                           | [Documentation](APIM/README.md) |                       |
+| Azure SQL (SQL)                | 🚧 WIP      | • Server<br>• Database    | [Documentation](SQL/README.md)  | @Nicwalle, @noyasarko |
 
 ## Getting started
 
