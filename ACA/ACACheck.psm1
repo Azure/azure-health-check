@@ -29,6 +29,10 @@ class ACACheck: ResourceCheck {
         return $this.acaObject.resourceGroup
     }
 
+    [bool] isSessionAffinityEnabled() {
+        return $this.acaObject.properties.configuration.ingress.stickySessions?.affinity -eq "sticky" 
+    }
+
 
     [CheckResults] assess() {
         $rules = Get-Content ACA/acaRules.json | ConvertFrom-Json
