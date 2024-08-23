@@ -33,6 +33,10 @@ class ACACheck: ResourceCheck {
         return $this.acaObject.properties.configuration.ingress.stickySessions?.affinity -eq "sticky" 
     }
 
+    [bool] isExternalIngressEnabled() {
+        return $this.acaObject.properties.configuration.ingress.external
+    }
+
 
     [CheckResults] assess() {
         $rules = Get-Content ACA/acaRules.json | ConvertFrom-Json

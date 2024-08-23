@@ -3,5 +3,10 @@
     "expected": false,
     "explanation": "Azure Container Apps should be deployed with session affinity disabled for better performance. See: https://learn.microsoft.com/en-us/azure/container-apps/sticky-sessions?pivots=azure-portal",
     "function": "isSessionAffinityEnabled"
+  },
+  "ACA_Private_DisableExternalIngress": {
+    "expected": false,
+    "explanation": "Azure Container Apps should be deployed with external ingress disabled for better security. See: https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview",
+    "function": "isExternalIngressEnabled"
   }
 }
