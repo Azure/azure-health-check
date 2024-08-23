@@ -37,6 +37,11 @@ class ACACheck: ResourceCheck {
         return $this.acaObject.properties.configuration.ingress.external
     }
 
+    [bool] isInsecureIngressAllowed() {
+        return $this.acaObject.properties.configuration.ingress.allowInsecure
+    }
+
+
 
     [CheckResults] assess() {
         $rules = Get-Content ACA/acaRules.json | ConvertFrom-Json

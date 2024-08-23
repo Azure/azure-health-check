@@ -8,5 +8,10 @@
     "expected": false,
     "explanation": "Azure Container Apps should be deployed with external ingress disabled for better security. See: https://learn.microsoft.com/en-us/azure/container-apps/ingress-overview",
     "function": "isExternalIngressEnabled"
+  },
+  "ACA_Security_DisableInsecureIngress": {
+    "expected": false,
+    "explanation": "Azure Container Apps should be deployed with insecure ingress disabled for better security. See: https://learn.microsoft.com/en-us/azure/container-apps/ingress-how-to",
+    "function": "isInsecureIngressAllowed"
   }
 }
