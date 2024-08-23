@@ -21,6 +21,7 @@ foreach ($currentSubscription in $subscriptions) {
         Write-Host ""
 
         $jsonACA = az containerapp list --environment $acaEnv.name -o json --only-show-errors
+        $jsonACA | Out-File -FilePath "$OutPath\aca_raw_$today.json" -Append
         $acaList = $jsonACA | ConvertFrom-Json -AsHashTable
 
         foreach ($aca in $acaList) {
