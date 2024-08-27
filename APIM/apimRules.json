@@ -1,7 +1,52 @@
 {
-  "APIM_Platform_stv2": {
+  "APIM_Compliance_Platform_stv2": {
     "expected": true,
-    "explanation": "The API Management service should be migrated to the stv2 platform. See https://learn.microsoft.com/en-us/azure/api-management/migrate-stv1-to-stv2-no-vnet",
+    "explanation": "The API Management service should be migrated to the stv2 platform. For more information: https://learn.microsoft.com/en-us/azure/api-management/migrate-stv1-to-stv2-no-vnet",
     "function": "isStv2"
+  },
+  "APIM_Availability_Zones": {
+    "expected": true,
+    "explanation": "The API Management service should be configured with availability zones for higher availability. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-availability-zones",
+    "function": "hasAvailabilityZones"
+  },
+  "APIM_Deployment_Private_Endpoint_Connections": {
+    "expected": true,
+    "explanation": "The API Management service should be configured with private endpoint connections. For more information: https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview",
+    "function": "hasPrivateEndpointConnections"
+  },
+  "APIM_Deployment_Public_Network_Access" :{
+    "expected" : true,
+    "explanation" : "The API Management service",
+    "function" : "hasPublicNetworkAccessDisabled"
+  },
+  "APIM_API_API_Version": {
+    "expected": "2021-01-01",
+    "explanation": "The API Management service should be running at least version 2021-01-01.",
+    "function": "hasMinimumApiVersion"
+  },
+  "APIM_Security_Backend_Certificates": {
+    "expected": false,
+    "explanation": "The API Management service should not be configured with the following retired protocols TLS1.0, TLS1.1 and SSL3.0. For more information: ",
+    "function": "hasCorrectBackendProtocols"
+  },
+  "APIM_Security_Client_Certificate" : {
+    "expected": true,
+    "explanation": "The API Management service should have client certificate enabled",
+    "function": "hasClientCertificateEnabled"
+  },
+  "APIM_Security_Secure_Ciphers" : {
+    "expected": true,
+    "explanation": "The API Management service should not have weak ciphers",
+    "function": "hasSecureCiphers"
+  },
+  "APIM_API_Named_Values" : {
+    "expected": true,
+    "explanaion": "The API Management service should have all name values encrypted as key vault secrets ",
+    "function": "hasEncryptedValues"
+  },
+  "APIM_Deployment_Locations" : {
+    "expected": true,
+    "explanation": "The API Management should have instances across multiple regions to enhance service availability and resilience",
+    "function": "hasAdditionalLocations"
   }
 }

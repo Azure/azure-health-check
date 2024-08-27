@@ -1,4 +1,4 @@
-Write-Host "******** Azure API Management assessment" -ForegroundColor Cyan
+Write-Host "******** Azure API Management assessment ********" -ForegroundColor Cyan
 
 
 $subscriptions = az account subscription list -o json --only-show-errors  | ConvertFrom-Json
