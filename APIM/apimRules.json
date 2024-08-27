@@ -14,10 +14,10 @@
     "explanation": "The API Management service should be configured with private endpoint connections. For more information: https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-overview",
     "function": "hasPrivateEndpointConnections"
   },
-  "APIM_Deployment_Public_Network_Access" :{
-    "expected" : true,
-    "explanation" : "The API Management service",
-    "function" : "hasPublicNetworkAccessDisabled"
+  "APIM_Deployment_Public_Network_Access": {
+    "expected": true,
+    "explanation": "The API Management service",
+    "function": "hasPublicNetworkAccessDisabled"
   },
   "APIM_API_API_Version": {
     "expected": "2021-01-01",
@@ -29,22 +29,22 @@
     "explanation": "The API Management service should not be configured with the following retired protocols TLS1.0, TLS1.1 and SSL3.0. For more information: ",
     "function": "hasCorrectBackendProtocols"
   },
-  "APIM_Security_Client_Certificate" : {
+  "APIM_Security_Client_Certificate": {
     "expected": true,
     "explanation": "The API Management service should have client certificate enabled",
     "function": "hasClientCertificateEnabled"
   },
-  "APIM_Security_Secure_Ciphers" : {
+  "APIM_Security_Secure_Ciphers": {
     "expected": true,
     "explanation": "The API Management service should not have weak ciphers",
-    "function": "hasSecureCiphers"
+    "function": "hasInsecureCiphers"
   },
-  "APIM_API_Named_Values" : {
+  "APIM_API_Named_Values": {
     "expected": true,
     "explanaion": "The API Management service should have all name values encrypted as key vault secrets ",
     "function": "hasEncryptedValues"
   },
-  "APIM_Deployment_Locations" : {
+  "APIM_Deployment_Locations": {
     "expected": true,
     "explanation": "The API Management should have instances across multiple regions to enhance service availability and resilience",
     "function": "hasAdditionalLocations"

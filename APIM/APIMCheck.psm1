@@ -43,7 +43,7 @@ class APIMCheck: ResourceCheck {
         return $this.apimObject.publicNetworkAccess -eq "Disabled"
     }
 
-    [bool] hasCorrectBackendProtocols(){
+    [bool] hasCorrectBackendProtocols() {
         return $this.apimObject.customProperties.Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30 -eq "False" 
         and $this.apimObject.customProperties.Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10 -eq "False" 
         and $this.apimObject.customProperties.Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11 -eq "False" 
@@ -65,25 +65,38 @@ class APIMCheck: ResourceCheck {
         return $false
     }
 
-    [bool] hasAdditionalLocations(){
+    [bool] hasAdditionalLocations() {
         return $this.apimObject.additionalLocations -ne $null
     }
 
-    [bool] hasSecureCiphers([array]$expectedCiphers = @("TripleDes168","TLS_RSA_WITH_AES_128_CBC_SHA","TLS_RSA_WITH_AES_256_CBC_SHA","TLS_RSA_WITH_AES_128_CBC_SHA256","TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA","TLS_RSA_WITH_AES_256_CBC_SHA256","TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA","TLS_RSA_WITH_AES_128_GCM_SHA256")) {
-        $collectedCiphers = @()
-        $cipherProperties = $this.apimObject.customProperties["Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers"]
-        foreach ($cipherName in $cipherProperties.Keys) {
-            if ($cipherProperties[$cipherName]) {
-                $collectedCiphers += $cipherName
+    [bool] hasInsecureCiphers() {
+
+        $weakCiphers = @(
+            "TripleDes168",
+            "TLS_RSA_WITH_AES_128_CBC_SHA",
+            "TLS_RSA_WITH_AES_256_CBC_SHA",
+            "TLS_RSA_WITH_AES_128_CBC_SHA256",
+            "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+            "TLS_RSA_WITH_AES_256_CBC_SHA256",
+            "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+            "TLS_RSA_WITH_AES_128_GCM_SHA256"
+        )
+
+        $propertyPrefix = "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers."
+
+        $cipherProperties = $this.apimObject.customerProperties
+        
+
+        foreach ($cipher in $weakCiphers) {
+            
+            if (-not ($cipherProperties.ContainsKey($propertyPrefix + $cipher)) -or $cipherProperties[$propertyPrefix + $cipher] -eq $true) {
+                Write-Host $cipher + " not found in list"
+                return $true
             }
+
+            Write-Host $cipher + " found in list"
         }
-        # Check if all expected ciphers are present in the collected ciphers
-        foreach ($expectedCipher in $expectedCiphers) {
-            if ($collectedCiphers -notcontains $expectedCipher) {
-                return $false
-            }
-        }
-        return $true
+        return $false
     }
 
     [CheckResults] assess() {
