@@ -1,13 +1,68 @@
 {
+  "APIM_API_API_Version": {
+    "expected": "2021-08-01",
+    "explanation": "The API Management service should be running with version 2021-08-01 or newer. For more information: https://learn.microsoft.com/en-us/azure/api-management/breaking-changes/api-version-retirement-sep-2023",
+    "function": "hasMinimumApiVersion"
+  },
+  "APIM_API_Named_Values": {
+    "expected": true,
+    "explanation": "The API Management service should have all name values encrypted as key vault secrets. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-properties?tabs=azure-portal#prerequisites-for-key-vault-integration",
+    "function": "hasEncryptedValues"
+  },
+  "APIM_API_Policy_Base": {
+    "expected": true,
+    "explanation": "The API Management service should have a base element to any policy. For more information: https://learn.microsoft.com/azure/api-management/set-edit-policies?tabs=form#use-base-element-to-set-policy-evaluation-order",
+    "function": "hasBasedPolicies"
+  },
+  "APIM_API_API_Descriptors":{
+    "expected": true,
+    "explanation": "The API Management service should have APIs that have a description. For more information: https://learn.microsoft.com/en-us/azure/api-management/import-and-publish",
+    "function": "hasAPIDescriptors"
+  },
+  "APIM_API_Product_Approval": {
+    "expected": true,
+    "explanation": "The API Management service should have products that require approval. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-add-products?tabs=azure-portal",
+    "function": "hasProductApprovalRequired"
+  },
+  "APIM_API_Product_Subscription":{
+    "expected": true,
+    "explanation": "The API Management service should have products that require a subscription. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-subscriptions",
+    "function": "hasProductSubscriptionRequired"
+  },
+  "APIM_API_Product_Descriptors":{
+    "expected": true,
+    "explanation": "The API Management service should have products that have a description. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-add-products?tabs=azure-portal ",
+    "function": "hasProductDescriptors"
+  },
+  "APIM_API_Product_Terms": {
+    "expected": true,
+    "explanation": "The API Management service should have products that require acceptance of terms. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-add-products?tabs=azure-portal",
+    "function": "hasProductTermsRequired"
+  },
+  "APIM_API_Sample_Products": {
+    "expected": true,
+    "explanation": "The API Management service should not have sample products. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-add-products?tabs=azure-portal",
+    "function": "hasSampleProducts"
+  },
   "APIM_Compliance_Platform_stv2": {
     "expected": true,
     "explanation": "The API Management service should be migrated to the stv2 platform. For more information: https://learn.microsoft.com/en-us/azure/api-management/migrate-stv1-to-stv2-no-vnet",
     "function": "isStv2"
   },
-  "APIM_Availability_Zones": {
+  "APIM_Deployment_Availability_Zones": {
     "expected": true,
-    "explanation": "The API Management service should be configured with availability zones for higher availability. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-availability-zones",
+    "explanation": "The API Management service should be configured with availability zones for higher availability. For more information: https://learn.microsoft.com/en-us/azure/api-management/high-availability or https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-deploy-multi-region",
     "function": "hasAvailabilityZones"
+  },
+  "APIM_Deployment_Locations": {
+    "expected": true,
+    "explanation": "The API Management service should have instances across multiple regions to enhance service availability and resilience. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-deploy-multi-region",
+    "function": "hasAdditionalLocations"
+  },
+  "APIM_Deployment_MultiRegion_Gateway": {
+    "expected": true,
+    "explanation": "The API Management service should have each regional API gateway location enabled for multi-region redundancy. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-deploy-multi-region#about-multi-region-deployment",
+    "function": "hasMultiRegionGateway"
   },
   "APIM_Deployment_Private_Endpoint_Connections": {
     "expected": true,
@@ -16,37 +71,32 @@
   },
   "APIM_Deployment_Public_Network_Access": {
     "expected": true,
-    "explanation": "The API Management service",
+    "explanation": "The API Management service should not have public network access enabled. For more information: https://learn.microsoft.com/en-us/azure/api-management/virtual-network-concepts",
     "function": "hasPublicNetworkAccessDisabled"
-  },
-  "APIM_API_API_Version": {
-    "expected": "2021-01-01",
-    "explanation": "The API Management service should be running at least version 2021-01-01.",
-    "function": "hasMinimumApiVersion"
   },
   "APIM_Security_Backend_Certificates": {
     "expected": false,
-    "explanation": "The API Management service should not be configured with the following retired protocols TLS1.0, TLS1.1 and SSL3.0. For more information: ",
+    "explanation": "The API Management service should not be configured with the following retired protocols TLS1.0, TLS1.1 and SSL3.0. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-manage-protocols-ciphers",
     "function": "hasCorrectBackendProtocols"
   },
   "APIM_Security_Client_Certificate": {
     "expected": true,
-    "explanation": "The API Management service should have client certificate enabled",
+    "explanation": "The API Management service should have client certificate enabled. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-mutual-certificates-for-clients",
     "function": "hasClientCertificateEnabled"
   },
-  "APIM_Security_Secure_Ciphers": {
-    "expected": true,
-    "explanation": "The API Management service should not have weak ciphers",
+  "APIM_Security_Insecure_Ciphers": {
+    "expected": false,
+    "explanation": "The API Management service should not have weak ciphers. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-manage-protocols-ciphers ",
     "function": "hasInsecureCiphers"
   },
-  "APIM_API_Named_Values": {
+  "APIM_Security_Managed_Identity": {
     "expected": true,
-    "explanaion": "The API Management service should have all name values encrypted as key vault secrets ",
-    "function": "hasEncryptedValues"
+    "explanation": "The API Management service should have managed identities enabled. For more information: https://learn.microsoft.com/en-us/azure/api-management/api-management-howto-use-managed-service-identity ",
+    "function": "hasIdentityEnabled"
   },
-  "APIM_Deployment_Locations": {
+  "APIM_Security_Defender_Enabled": {
     "expected": true,
-    "explanation": "The API Management should have instances across multiple regions to enhance service availability and resilience",
-    "function": "hasAdditionalLocations"
+    "explanation": "The API Management service should have products that require approval. For more information: https://learn.microsoft.com/en-us/azure/defender-for-cloud/defender-for-apis-prepare",
+    "function": "isDefenderEnabled"
   }
 }
